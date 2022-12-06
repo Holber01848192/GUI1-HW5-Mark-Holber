@@ -1,0 +1,110 @@
+<!-- 
+Name: Mark Holber/UML CS/mark_holber@student.uml.edu
+Date: 11-30-2022
+File:index.html
+Description: Scrabble game
+-->
+
+
+   <!-- Defining and creating html document-->
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Scrabble</title>
+     
+     <!-- CSS import -->    
+        <link href="css.css" rel="stylesheet">
+
+        
+     <!-- Jquery imports-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" > 
+
+    <!-- Javascript and tiles import -->   
+        <script src="JavaScript.js"></script>
+        <link href="pieces.json" rel="source tiles">
+        
+    
+
+    </head>
+
+    <body>
+        <h1>Scrabble Game</h1>
+        <h2>Made by Mark Holber</h2>
+        <h3>11/30/2022 - GUI1-HW5</h3>
+        <div id="wrapper">
+            <!-- Where the tiles are dropped onto the board-->
+            <div id = "drop">
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"></div>
+            <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"></div>
+            <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"></div>
+            <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"></div>
+            <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"></div>
+            <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"></div>
+            <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)"></div>
+            </div>
+            <p id = "s1"> Current Score</p>
+            <div id ="score"></div>
+            <br>  <br>  <br>
+            <p id = "s2"> Current Word</p>
+            <div id ="word"></div>
+            <br>  <br>  <br>
+            <p id = "s3"> Final Score</p>
+            <div id ="finalScore"></div>
+            <!--<div id ="validWord">Valid Word</div> 
+            <div id ="validLength">valid Length</div> -->
+      
+          
+
+        </div>
+        <!-- Action buttons -->
+        <div id ="btn1">
+            <button id="btn1" onclick="newTiles()">New Tiles</button>
+            <button id="btn2" onclick="btnSubmit()">Submit Score</button>
+            <button id="btn3" onclick="reset()">Empty Game Board</button>
+        </div>
+        <div id="board" ondrop="drop(event)" ondragover="allowDrop(event)">
+             <!-- Tiles to select from-->
+           
+            <img id="a" src="graphics_data/tiles/Scrabble_Tile_A.jpg" draggable="true" ondragstart="drag(event)"  ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="b" src="graphics_data/tiles/Scrabble_Tile_B.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="c" src="graphics_data/tiles/Scrabble_Tile_C.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="d" src="graphics_data/tiles/Scrabble_Tile_D.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="e" src="graphics_data/tiles/Scrabble_Tile_E.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="f" src="graphics_data/tiles/Scrabble_Tile_F.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="g" src="graphics_data/tiles/Scrabble_Tile_G.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="h" src="graphics_data/tiles/Scrabble_Tile_H.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">           
+            <img id="i" src="graphics_data/tiles/Scrabble_Tile_I.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="j" src="graphics_data/tiles/Scrabble_Tile_J.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="k" src="graphics_data/tiles/Scrabble_Tile_K.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="l" src="graphics_data/tiles/Scrabble_Tile_L.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">           
+            <img id="m" src="graphics_data/tiles/Scrabble_Tile_M.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">          
+            <img id="n" src="graphics_data/tiles/Scrabble_Tile_N.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="o" src="graphics_data/tiles/Scrabble_Tile_O.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="p" src="graphics_data/tiles/Scrabble_Tile_P.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="q" src="graphics_data/tiles/Scrabble_Tile_Q.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="r" src="graphics_data/tiles/Scrabble_Tile_R.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="s" src="graphics_data/tiles/Scrabble_Tile_S.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="t" src="graphics_data/tiles/Scrabble_Tile_T.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="u" src="graphics_data/tiles/Scrabble_Tile_U.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="v" src="graphics_data/tiles/Scrabble_Tile_V.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="w" src="graphics_data/tiles/Scrabble_Tile_W.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="x" src="graphics_data/tiles/Scrabble_Tile_X.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="y" src="graphics_data/tiles/Scrabble_Tile_Y.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="z" src="graphics_data/tiles/Scrabble_Tile_Z.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+            <img id="blank" src="graphics_data/tiles/Scrabble_Tile_Blank.jpg" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" ondragover="allowDrop(event)"width="75" height="90">
+          
+        </div>
+        <footer>
+          
+            
+            
+        </footer>
+
+    </body>
+</html>
